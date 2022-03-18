@@ -1,17 +1,17 @@
 {
   "name": {
-    "zh-cn": "Valon-I智能车-掌控板",
-    "en": "Valon-I Smart car-mpython"
+    "zh-cn": "掌控板扩展板",
+    "en": "mPython extend Board"
   },
   "description": {
-    "zh-cn": "YFROBOT Valon-I 智能编程小车（掌控板）",
-    "en": "YFROBOT Valon-I Smart Programming Car（mpython）"
+    "zh-cn": "YFROBOT 掌控板扩展板（带电机驱动）",
+    "en": "YFROBOT mPython extend board (with motor drive)"
   },
   "author": "YFROBOT",
   "email": "yfrobot@qq.com",
   "license": "MIT",
   "isBoard": false,
-  "id": "yfrobot_valon_mpython",
+  "id": "yfrobot_mpython_extboard",
   "version": "0.0.1",
   "platform": [ "win", "mac", "web" ],
   "asset": {

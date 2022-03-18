@@ -1,13 +1,13 @@
 /** 
  * @file yfrobot
- * @brief YFROBOT's sensors Mind+ library.
+ * @brief YFROBOT's 掌控板扩展板 Mind+ library.
  * @n This is a MindPlus graphics programming extension for YFROBOT's module.
  * 
  * @copyright    YFROBOT,2022
  * @copyright    MIT Lesser General Public License
  * 
  * @author [email](yfrobot@qq.com)
- * @date  2022-03-05
+ * @date  2022-03-18
 */
 
 enum LEDONOFF {
