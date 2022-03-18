@@ -39,12 +39,10 @@ namespace mpythonext {
         let speed = parameter.SPEED.code;
         let dir = parameter.DIR.code;
 
-        Generator.addInclude(`definempythonextmotor`, `PROGMEM void mp_motorDrive(int mot, int speed, int dir); // mpythonext motor 控制函数`)
-        Generator.addInclude(`definempythonextmotorFun`, `// mpythonext motor 控制函数\n`+
+        Generator.addInclude(`definempythonextmotor`, `PROGMEM void mp_motorDrive(int mot, int speed, int dir); // 掌控板扩展板电机控制函数`)
+        Generator.addInclude(`definempythonextmotorFun`, `// 掌控板扩展板电机控制函数\n`+
             `void mp_motorDrive(int mot, int speed, int dir) {\n`+
             `  int sp = map(speed, 0, 255, 0, 1023);\n`+
-            `  analogWrite(P14, 0);\n`+
-            `  analogWrite(P16, 0);\n`+
             `  if (mot == 0) {    // M1电机\n`+
             `    if (dir == 0) {  // 正转\n`+
             `      digitalWrite(P13, LOW);\n`+
@@ -76,6 +74,7 @@ namespace mpythonext {
             `  }\n`+
             `}`
         );
+        Generator.addSetup(`setupmpythonextmotor`,`mp_motorDrive(2,0,0);`);
 
         Generator.addCode(`mp_motorDrive(${mot},${speed},${dir});`);
     }
@@ -85,12 +84,10 @@ namespace mpythonext {
     export function motorStop(parameter: any, block: any) {
         let mot = parameter.MOT.code;
 
-        Generator.addInclude(`definempythonextmotor`, `PROGMEM void mp_motorDrive(int mot, int speed, int dir); // mpythonext motor 控制函数`)
-        Generator.addInclude(`definempythonextmotorFun`, `// mpythonext motor 控制函数\n`+
+        Generator.addInclude(`definempythonextmotor`, `PROGMEM void mp_motorDrive(int mot, int speed, int dir); // 掌控板扩展板电机控制函数`)
+        Generator.addInclude(`definempythonextmotorFun`, `// 掌控板扩展板电机控制函数\n`+
             `void mp_motorDrive(int mot, int speed, int dir) {\n`+
             `  int sp = map(speed, 0, 255, 0, 1023);\n`+
-            `  analogWrite(P14, 0);\n`+
-            `  analogWrite(P16, 0);\n`+
             `  if (mot == 0) {    // M1电机\n`+
             `    if (dir == 0) {  // 正转\n`+
             `      digitalWrite(P13, LOW);\n`+
@@ -122,6 +119,7 @@ namespace mpythonext {
             `  }\n`+
             `}`
         );
+        Generator.addSetup(`setupmpythonextmotor`,`mp_motorDrive(2,0,0);`);
 
         Generator.addCode(`mp_motorDrive(${mot},0,0);`);
     }
