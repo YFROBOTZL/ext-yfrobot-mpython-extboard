@@ -2,5 +2,12 @@
     "mpythonext.motorDrive|block": "[MOT]电机以[SPEED] 速度 [DIR]",
     "mpythonext.MOTORDIR.0|menu": "正转",
     "mpythonext.MOTORDIR.1|menu": "反转",
-    "mpythonext.motorStop|block": "[MOT]电机停止"
+    "mpythonext.motorStop|block": "[MOT]电机停止",
+    "mpythonext.carMove|block": "小车以[SPEED] 速度 [DIR]",
+    "mpythonext.MOVEDIR.0|menu": "前进",
+    "mpythonext.MOVEDIR.1|menu": "后退",
+    "mpythonext.MOVEDIR.2|menu": "左转",
+    "mpythonext.MOVEDIR.3|menu": "右转",
+    "mpythonext.carMoveStop|block": "小车停止"
+
 }

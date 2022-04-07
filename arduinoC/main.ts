@@ -14,9 +14,7 @@ enum MOTORN {
     //% block="M1"
     0,
     //% block="M2"
-    1,
-    //% block="M1&M2"
-    2
+    1
 }
 
 enum MOTORDIR {
@@ -24,6 +22,17 @@ enum MOTORDIR {
     0,
     //% block="REVERSE"
     1
+}
+
+enum MOVEDIR {
+    //% block="FORWARD"
+    0,
+    //% block="BACK"
+    1,
+    //% block="TURNLEFT"
+    2,
+    //% block="TURNRIGHT"
+    3,
 }
 
 
@@ -122,6 +131,82 @@ namespace mpythonext {
         Generator.addSetup(`setupmpythonextmotor`,`mp_motorDrive(2,0,0);`);
 
         Generator.addCode(`mp_motorDrive(${mot},0,0);`);
+    }
+
+    //% block="Car Move at [SPEED] speed [DIR]" blockType="command"
+    //% SPEED.shadow="range"   SPEED.params.min=0    SPEED.params.max=255    SPEED.defl=200
+    //% DIR.shadow="dropdown" DIR.options="MOVEDIR" DIR.defl="MOVEDIR.0"
+    export function carMove(parameter: any, block: any) {
+        let speed = parameter.SPEED.code;
+        let dir = parameter.DIR.code;
+
+        Generator.addInclude(`definempythonextcar`, `PROGMEM void mp_carMove(int speed, int dir); // 掌控板扩展板电机控制函数`)
+        Generator.addInclude(`definempythonextcarmove`, `// 小车驱动\n`+
+            `void mp_carMove(int speed, int dir) {\n`+
+            `  int sp = map(speed, 0, 255, 0, 1023);\n`+
+            `  // M1&M2电机\n`+
+            `  if (dir == 0) {  // 前进\n`+
+            `    digitalWrite(P13, LOW);\n`+
+            `    analogWrite(P14, sp);\n`+
+            `    digitalWrite(P15, HIGH);\n`+
+            `    analogWrite(P16, sp);\n`+
+            `  } else if (dir == 1) {  // 后退\n`+
+            `    digitalWrite(P13, HIGH);\n`+
+            `    analogWrite(P14, sp);\n`+
+            `    digitalWrite(P15, LOW);\n`+
+            `    analogWrite(P16, sp);\n`+
+            `  } else if (dir == 2) {  // 左转\n`+
+            `    digitalWrite(P13, LOW);\n`+
+            `    analogWrite(P14, 0);\n`+
+            `    digitalWrite(P15, HIGH);\n`+
+            `    analogWrite(P16, sp);\n`+
+            `  } else {         // 右转\n`+
+            `    digitalWrite(P13, LOW);\n`+
+            `    analogWrite(P14, sp);\n`+
+            `    digitalWrite(P15, HIGH);\n`+
+            `    analogWrite(P16, 0);\n`+
+            `  }\n`+
+            `}`
+        );
+        Generator.addSetup(`setupmpythonextmotor`,`mp_carMove(0,0);`);
+
+        Generator.addCode(`mp_carMove(${speed},${dir});`);
+    }
+
+    //% block="Car Move Stop" blockType="command"
+    export function carMoveStop(parameter: any, block: any) {
+
+        Generator.addInclude(`definempythonextcar`, `PROGMEM void mp_carMove(int speed, int dir); // 掌控板扩展板电机控制函数`)
+        Generator.addInclude(`definempythonextcarmove`, `// 小车驱动\n`+
+            `void mp_carMove(int speed, int dir) {\n`+
+            `  int sp = map(speed, 0, 255, 0, 1023);\n`+
+            `  // M1&M2电机\n`+
+            `  if (dir == 0) {  // 前进\n`+
+            `    digitalWrite(P13, LOW);\n`+
+            `    analogWrite(P14, sp);\n`+
+            `    digitalWrite(P15, HIGH);\n`+
+            `    analogWrite(P16, sp);\n`+
+            `  } else if (dir == 1) {  // 后退\n`+
+            `    digitalWrite(P13, HIGH);\n`+
+            `    analogWrite(P14, sp);\n`+
+            `    digitalWrite(P15, LOW);\n`+
+            `    analogWrite(P16, sp);\n`+
+            `  } else if (dir == 2) {  // 左转\n`+
+            `    digitalWrite(P13, LOW);\n`+
+            `    analogWrite(P14, 0);\n`+
+            `    digitalWrite(P15, HIGH);\n`+
+            `    analogWrite(P16, sp);\n`+
+            `  } else {         // 右转\n`+
+            `    digitalWrite(P13, LOW);\n`+
+            `    analogWrite(P14, sp);\n`+
+            `    digitalWrite(P15, HIGH);\n`+
+            `    analogWrite(P16, 0);\n`+
+            `  }\n`+
+            `}`
+        );
+        Generator.addSetup(`setupmpythonextmotor`,`mp_carMove(0,0);`);
+
+        Generator.addCode(`mp_carMove(0,0);`);
     }
 
 }
