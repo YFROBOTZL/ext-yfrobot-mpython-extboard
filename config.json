@@ -1,18 +1,18 @@
 {
   "name": {
-    "zh-cn": "掌控板扩展板",
-    "en": "mPython extend Board"
+    "zh-cn": "掌控板扩展板V2",
+    "en": "mPython extend Board V2"
   },
   "description": {
-    "zh-cn": "YFROBOT 掌控板扩展板（带电机驱动）",
-    "en": "YFROBOT mPython extend board (with motor drive)"
+    "zh-cn": "YFROBOT 掌控板扩展板V2（带电机驱动）",
+    "en": "YFROBOT mPython extend board V2 (with motor drive)"
   },
   "author": "YFROBOT",
   "email": "yfrobot@qq.com",
   "license": "MIT",
   "isBoard": false,
   "id": "yfrobot_mpython_extboard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "platform": [ "win", "mac", "web" ],
   "asset": {
     "arduinoC": {

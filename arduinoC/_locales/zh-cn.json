@@ -1,4 +1,8 @@
 {
+    "mpythonext.motorDrive_V2|block": "V2-[MOT]电机以[SPEED] 速度 [DIR]",
+    "mpythonext.motorStop_V2|block": "V2-[MOT]电机停止",
+    "mpythonext.carMove_V2|block": "V2-小车以[SPEED] 速度 [DIR]",
+    "mpythonext.carMoveStop_V2|block": "V2-小车停止",
     "mpythonext.motorDrive|block": "[MOT]电机以[SPEED] 速度 [DIR]",
     "mpythonext.MOTORDIR.0|menu": "正转",
     "mpythonext.MOTORDIR.1|menu": "反转",
